@@ -33,7 +33,7 @@ export const BoostsPage: FC<BoostsPageProps> = ({ count }) => {
         <Balance count={count} />
         <Typography sx={{ marginTop: "10px" }}>Your balance</Typography>
         <Typography variant="h4" sx={{ marginTop: "100px" }}>
-          🚀 {JSON.stringify(WebApp)} 🚀
+          🚀 {WebApp?.WebAppInitData?.user} 🚀
         </Typography>
         <Typography variant="h4" sx={{ marginTop: "15px" }}>
           Coming soon!
