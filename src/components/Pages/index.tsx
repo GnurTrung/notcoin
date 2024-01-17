@@ -35,32 +35,33 @@ export const IndexPage: FC<IndexPageProps> = ({
       }}>
       <Box
         sx={{
-          margin: "0",
+          // margin: "0",
           position: "absolute",
           width: "100%",
           height: "100%",
-          backgroundImage: 'url("background.svg")',
+          // backgroundImage: 'url("background.svg")',
+          backgroundColor: "black",
           backgroundSize: "cover",
           backgroundPosition: "center",
           zIndex: -100,
           backgroundRepeat: "no-repeat",
-          transform: "scale(1.1)",
-          filter: "blur(8px)",
-          "-webkit-filter": " blur(8px)",
-          "&:before": {
-            content: '""',
-            position: "absolute",
-            width: "350px",
-            height: "350px",
-            borderRadius: "350px",
-            background:
-              "radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 80%);",
-            left: 0,
-            right: 0,
-            bottom: 0,
-            top: 0,
-            margin: "auto",
-          },
+          // transform: "scale(1.1)",
+          // filter: "blur(8px)",
+          // "-webkit-filter": " blur(8px)",
+          // "&:before": {
+          //   content: '""',
+          //   position: "absolute",
+          //   width: "350px",
+          //   height: "350px",
+          //   borderRadius: "350px",
+          //   background:
+          //     "radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 80%);",
+          //   left: 0,
+          //   right: 0,
+          //   bottom: 0,
+          //   top: 0,
+          //   margin: "auto",
+          // },
         }}></Box>
       <Clicker
         maxPower={maxPower}
