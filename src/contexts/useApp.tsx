@@ -14,7 +14,7 @@ export function ApplicationProvider({ children }: any) {
       const params = {
         auth_date: WebApp?.initDataUnsafe?.auth_date,
         query_id: WebApp?.initDataUnsafe?.query_id,
-        user: WebApp?.initDataUnsafe?.user,
+        user: JSON.stringify(WebApp?.initDataUnsafe?.user),
         // receiver: WebApp?.initDataUnsafe?.receiver,
         // chat: WebApp?.initDataUnsafe?.chat,
         // chat_type: WebApp?.initDataUnsafe?.chat_type,
