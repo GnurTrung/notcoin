@@ -11,7 +11,18 @@ export function ApplicationProvider({ children }: any) {
   const WebApp = useWebApp();
   const handleGetPro5 = async () => {
     try {
-      const res = await getUserProfile(WebApp?.initDataUnsafe);
+      const params = {
+        auth_date: WebApp?.initDataUnsafe?.auth_date,
+        query_id: WebApp?.initDataUnsafe?.query_id,
+        allows_write_to_pm: WebApp?.initDataUnsafe?.user?.allows_write_to_pm,
+        first_name: WebApp?.initDataUnsafe?.user?.first_name,
+        id: WebApp?.initDataUnsafe?.user?.id,
+        language_code: WebApp?.initDataUnsafe?.user?.language_code,
+        last_name: WebApp?.initDataUnsafe?.user?.last_name,
+        username: WebApp?.initDataUnsafe?.user?.username,
+        hash: WebApp?.initDataUnsafe?.hash,
+      };
+      const res = await getUserProfile(params);
       toast.success("User profile: ");
     } catch (ex) {
       // toast.error(ex);
