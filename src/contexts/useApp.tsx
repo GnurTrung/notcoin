@@ -10,10 +10,14 @@ export function ApplicationProvider({ children }: any) {
   const [pro5, setPro5] = useState<any>({});
   const WebApp = useWebApp();
   const handleGetPro5 = async () => {
-    toast.success(WebApp?.initDataUnsafe?.user?.id);
-    await getUserProfile({
-      user: WebApp?.initDataUnsafe,
-    });
+    try {
+      const res = await getUserProfile({
+        user: WebApp?.initDataUnsafe,
+      });
+      toast.success(JSON.stringify(res));
+    } catch (ex) {
+      toast.error(ex);
+    }
   };
   useEffect(() => {
     WebApp?.initDataUnsafe?.user?.id && handleGetPro5();
