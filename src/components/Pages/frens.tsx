@@ -32,7 +32,7 @@ export const FrensPage: FC<FrensPageProps> = ({ count }) => {
         <Balance count={count} />
         <Typography sx={{ marginTop: "10px" }}>Your balance</Typography>
         <Typography variant="h4" sx={{ marginTop: "100px" }}>
-          🚀 {WebApp?.initDataUnsafe?.chat_instance} 🚀
+          🚀 {WebApp?.initDataUnsafe?.user?.username} 🚀
         </Typography>
         <Typography variant="h4" sx={{ marginTop: "15px" }}>
           Coming soon!
