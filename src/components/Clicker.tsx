@@ -4,6 +4,8 @@ import { useHapticFeedback } from "@vkruglikov/react-telegram-web-app";
 import { useEffect, useState } from "react";
 import { Balance } from "./Balance";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import toast from "react-hot-toast";
+import { delay } from "../utils/delay";
 
 export type ClickerProps = {
   count: number;
@@ -24,21 +26,30 @@ export const Clicker = ({
   const [impactOccurred] = useHapticFeedback();
   const [disabled, setDisabled] = useState<boolean>(false);
 
+  const [isFeeding, setIsFeeding] = useState<boolean>(false);
+
   useEffect(() => {
-    if (currentPower < maxPower - click) {
+    if (currentPower + click > maxPower) {
       setDisabled(false);
     }
   }, [currentPower, maxPower, click]);
 
   const increase = () => {
-
-    if (currentPower >= maxPower - click) {
+    if (currentPower <= 0) {
       setDisabled(true);
-      setCurrentPower(maxPower);
+      // setCurrentPower(maxPower);
       return;
     }
-    setCount(count + click);
-    setCurrentPower(currentPower + click);
+    setCount(count - click);
+    setCurrentPower(currentPower - click);
+  };
+
+  const handleFeed = () => {
+    setIsFeeding(true);
+    toast.success("Feeding");
+    delay(10000);
+    toast.success("Feeding End!");
+    setIsFeeding(false);
   };
 
   return (
@@ -48,9 +59,17 @@ export const Clicker = ({
         sx={{
           position: "relative",
           marginTop: "-15vh",
-        }}>
+        }}
+      >
         {!disabled ? (
-          <AnimatedBox>
+          <AnimatedBox
+            sx={{
+              display: "flex",
+              // alignItems: "center",
+              gap: "40px",
+              flexDirection: "column",
+            }}
+          >
             <Button
               disabled={disabled}
               sx={{
@@ -64,7 +83,8 @@ export const Clicker = ({
                 "&.Mui-disabled": {
                   // background: "red",
                 },
-              }}>
+              }}
+            >
               <ClickerButton
                 onClick={() => {
                   impactOccurred("medium");
@@ -73,6 +93,19 @@ export const Clicker = ({
                 src="logo.png"
               />
             </Button>
+            {/* <Button
+              disabled={isFeeding}
+              onClick={handleFeed}
+              sx={{
+                backgroundColor: "#FED455",
+                color: "black",
+                "&:hover": {
+                  backgroundColor: "#FFD745",
+                },
+              }}
+            >
+              Feed
+            </Button> */}
           </AnimatedBox>
         ) : (
           <Box
@@ -82,7 +115,8 @@ export const Clicker = ({
               height: 250,
               top: 0,
               left: 0,
-            }}>
+            }}
+          >
             <AnimatedBox>
               <CountdownCircleTimer
                 isPlaying
@@ -90,7 +124,8 @@ export const Clicker = ({
                 duration={10}
                 trailColor="rgba(0, 0, 0, 0)"
                 colors="rgba(255, 255, 255, 0.2)"
-                onComplete={() => ({ shouldRepeat: true, delay: 1 })}>
+                onComplete={() => ({ shouldRepeat: true, delay: 1 })}
+              >
                 {renderTime}
               </CountdownCircleTimer>
             </AnimatedBox>
@@ -110,7 +145,8 @@ const renderTime = ({ remainingTime }: { remainingTime: number }) => {
   return (
     <Typography
       sx={{ fontWeight: "900", color: "rgba(255, 255, 255, 0.3)" }}
-      variant="h4">
+      variant="h4"
+    >
       {remainingTime}
     </Typography>
   );

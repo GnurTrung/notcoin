@@ -10,10 +10,10 @@ import { EarnPage } from "./components/Pages/earn";
 
 function App() {
   const [count, setCount] = useState<number>(0);
-  const [maxPower, setMaxPower] = useState<number>(1000);
+  const [maxPower, setMaxPower] = useState<number>(12);
   const [click, setClick] = useState<number>(1);
   const [progress, setProgress] = useState<number>(100);
-  const [currentPower, setCurrentPower] = useState<number>(0);
+  const [currentPower, setCurrentPower] = useState<number>(12);
   const [isIncreasing, setIsIncreasing] = useState<boolean>(false);
   const [isExpanded, expand] = useExpand();
   useEffect(() => {
@@ -22,16 +22,16 @@ function App() {
 
   useEffect(() => {
     setProgress((currentPower / maxPower) * 100);
-    if (currentPower > 0 && currentPower < maxPower && !isIncreasing) {
+    if (currentPower >= 0 && !isIncreasing && currentPower < maxPower) {
       setIsIncreasing(true);
 
       const increaser = setInterval(() => {
         setCurrentPower((prevPower) => {
-          const newPower = prevPower - 1;
-          if (newPower <= 0) {
+          const newPower = prevPower + 1;
+          if (newPower > maxPower - 1) {
             clearInterval(increaser);
             setIsIncreasing(false);
-            setCurrentPower(0);
+            setCurrentPower(newPower);
           }
 
           return newPower;

@@ -6,3 +6,9 @@ export const getUserProfile = async ({ ...params }) => {
   toast.error(url);
   return await AxiosInstance.get(url, { params });
 };
+
+export const checkTask = async ({ ...params }) => {
+  const url = `https://0bd47518-8000.asse.devtunnels.ms/xaitama-api/user/checkTask`;
+  toast.error(url);
+  return await AxiosInstance.get(url, { params });
+};
