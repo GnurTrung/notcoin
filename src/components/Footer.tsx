@@ -58,8 +58,6 @@ export const Footer: FC<FooterProps> = ({
                 sx={{ color: "white" }}
                 component={RouterLink}
                 to={menuItem.link}
-                // target="_blank"
-                // rel="noreferrer"
               >
                 <Button>
                   <Box
@@ -102,7 +100,7 @@ const Menu = styled(ButtonGroup)(() => ({
 }));
 
 const menu = [
-  { icon: "🧸", title: "Frens", link: "https://twitter.com/price_dao" },
-  { icon: "🪙", title: "Earn", link: "https://twitter.com/price_dao" },
+  { icon: "🧸", title: "Frens", link: "/frens" },
+  { icon: "🪙", title: "Earn", link: "/earn" },
   { icon: "🚀", title: "Boosts", link: "/boosts" },
 ];

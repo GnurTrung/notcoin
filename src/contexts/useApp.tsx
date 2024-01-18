@@ -16,14 +16,14 @@ export function ApplicationProvider({ children }: any) {
       });
       toast.success("User profile: ");
     } catch (ex) {
-      toast.error(ex);
+      // toast.error(ex);
     }
   };
 
   useEffect(() => {
     WebApp?.initDataUnsafe?.user?.id && handleGetPro5();
   }, [WebApp?.initDataUnsafe?.user?.id]);
-  
+
   return (
     <ApplicationContext.Provider
       value={{
