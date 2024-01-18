@@ -1,8 +1,9 @@
 import { Box, Button, Card, Typography } from "@mui/material";
 import { Balance } from "../Balance";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BackButton, useWebApp } from "@vkruglikov/react-telegram-web-app";
+import toast from "react-hot-toast";
 
 export type BoostsPageProps = {
   count: number;
@@ -10,6 +11,13 @@ export type BoostsPageProps = {
 export const BoostsPage: FC<BoostsPageProps> = ({ count }) => {
   const navigate = useNavigate();
   const WebApp = useWebApp();
+  const handleGetPro5 = () => {
+    toast.success(WebApp?.initDataUnsafe?.user?.id);
+    toast.success(1);
+  };
+  useEffect(() => {
+    WebApp?.initDataUnsafe?.user?.id && handleGetPro5();
+  }, [WebApp?.initDataUnsafe?.user?.id]);
   return (
     <>
       <BackButton
