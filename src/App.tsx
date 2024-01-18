@@ -5,6 +5,8 @@ import { BoostsPage } from "./components/Pages/boosts";
 import { useExpand } from "@vkruglikov/react-telegram-web-app";
 import { ApplicationProvider } from "./contexts/useApp";
 import { Toaster } from "react-hot-toast";
+import { FrensPage } from "./components/Pages/frens";
+import { EarnPage } from "./components/Pages/earn";
 
 function App() {
   const [count, setCount] = useState<number>(0);
@@ -57,6 +59,8 @@ function App() {
           }
         />
         <Route path={"boosts"} element={<BoostsPage count={count} />} />
+        <Route path={"frens"} element={<FrensPage count={count} />} />
+        <Route path={"earn"} element={<EarnPage count={count} />} />
       </Routes>
     </ApplicationProvider>
   );
