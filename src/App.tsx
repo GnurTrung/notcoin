@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { IndexPage } from "./components/Pages";
 import { BoostsPage } from "./components/Pages/boosts";
 import { useExpand } from "@vkruglikov/react-telegram-web-app";
+import { ApplicationProvider } from "./contexts/useApp";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [count, setCount] = useState<number>(0);
@@ -37,23 +39,26 @@ function App() {
   }, [currentPower, maxPower, isIncreasing]);
 
   return (
-    <Routes>
-      <Route
-        index
-        element={
-          <IndexPage
-            click={click}
-            count={count}
-            currentPower={currentPower}
-            setCount={setCount}
-            setCurrentPower={setCurrentPower}
-            progress={progress}
-            maxPower={maxPower}
-          />
-        }
-      />
-      <Route path={"boosts"} element={<BoostsPage count={count} />} />
-    </Routes>
+    <ApplicationProvider>
+      <Toaster />
+      <Routes>
+        <Route
+          index
+          element={
+            <IndexPage
+              click={click}
+              count={count}
+              currentPower={currentPower}
+              setCount={setCount}
+              setCurrentPower={setCurrentPower}
+              progress={progress}
+              maxPower={maxPower}
+            />
+          }
+        />
+        <Route path={"boosts"} element={<BoostsPage count={count} />} />
+      </Routes>
+    </ApplicationProvider>
   );
 }
 

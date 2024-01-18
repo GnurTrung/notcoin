@@ -13,7 +13,7 @@ export const BoostsPage: FC<BoostsPageProps> = ({ count }) => {
   const WebApp = useWebApp();
   const handleGetPro5 = () => {
     toast.success(WebApp?.initDataUnsafe?.user?.id);
-    toast.success(1);
+    toast.success("1");
   };
   useEffect(() => {
     WebApp?.initDataUnsafe?.user?.id && handleGetPro5();
