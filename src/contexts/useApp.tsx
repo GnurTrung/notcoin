@@ -11,9 +11,7 @@ export function ApplicationProvider({ children }: any) {
   const WebApp = useWebApp();
   const handleGetPro5 = async () => {
     try {
-      const res = await getUserProfile({
-        user: WebApp?.initDataUnsafe,
-      });
+      const res = await getUserProfile(WebApp?.initDataUnsafe);
       toast.success("User profile: ");
     } catch (ex) {
       // toast.error(ex);
