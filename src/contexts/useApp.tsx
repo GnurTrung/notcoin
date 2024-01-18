@@ -14,14 +14,16 @@ export function ApplicationProvider({ children }: any) {
       const res = await getUserProfile({
         user: WebApp?.initDataUnsafe,
       });
-      toast.success(JSON.stringify(res));
+      toast.success("User profile: ");
     } catch (ex) {
       toast.error(ex);
     }
   };
+
   useEffect(() => {
     WebApp?.initDataUnsafe?.user?.id && handleGetPro5();
   }, [WebApp?.initDataUnsafe?.user?.id]);
+  
   return (
     <ApplicationContext.Provider
       value={{
