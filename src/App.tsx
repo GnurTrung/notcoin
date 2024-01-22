@@ -16,9 +16,9 @@ function App() {
   const [currentPower, setCurrentPower] = useState<number>(12);
   const [isIncreasing, setIsIncreasing] = useState<boolean>(false);
   const [isExpanded, expand] = useExpand();
-  useEffect(() => {
-    expand();
-  }, []);
+  // useEffect(() => {
+  //   expand();
+  // }, []);
 
   useEffect(() => {
     setProgress((currentPower / maxPower) * 100);
