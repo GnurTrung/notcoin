@@ -7,7 +7,9 @@ bot.start((ctx) =>
         [
           {
             text: "Play Game",
-            web_app: { url: "https://xaitama.com/" },
+            // web_app: { url: "https://xaitama.com/" },
+            web_app: { url: "https://game-slot-ruddy.vercel.app/" },
+            // web_app: { url: "https://notcoin-three.vercel.app/" },
           },
         ],
       ],

@@ -44,14 +44,6 @@ export const Clicker = ({
     setCurrentPower(currentPower - click);
   };
 
-  const handleFeed = () => {
-    setIsFeeding(true);
-    toast.success("Feeding");
-    delay(10000);
-    toast.success("Feeding End!");
-    setIsFeeding(false);
-  };
-
   return (
     <>
       <Balance count={count} />
@@ -88,24 +80,11 @@ export const Clicker = ({
               <ClickerButton
                 onClick={() => {
                   impactOccurred("medium");
-                  increase();
+                  // increase();
                 }}
                 src="logo.png"
               />
             </Button>
-            {/* <Button
-              disabled={isFeeding}
-              onClick={handleFeed}
-              sx={{
-                backgroundColor: "#FED455",
-                color: "black",
-                "&:hover": {
-                  backgroundColor: "#FFD745",
-                },
-              }}
-            >
-              Feed
-            </Button> */}
           </AnimatedBox>
         ) : (
           <Box

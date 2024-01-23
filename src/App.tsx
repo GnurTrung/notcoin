@@ -10,35 +10,35 @@ import { EarnPage } from "./components/Pages/earn";
 
 function App() {
   const [count, setCount] = useState<number>(0);
-  const [maxPower, setMaxPower] = useState<number>(12);
+  const [maxPower, setMaxPower] = useState<number>(10);
   const [click, setClick] = useState<number>(1);
-  const [progress, setProgress] = useState<number>(100);
-  const [currentPower, setCurrentPower] = useState<number>(12);
+  const [progress, setProgress] = useState<number>(80);
+  const [currentPower, setCurrentPower] = useState<number>(8);
   const [isIncreasing, setIsIncreasing] = useState<boolean>(false);
   const [isExpanded, expand] = useExpand();
-  // useEffect(() => {
-  //   expand();
-  // }, []);
-
   useEffect(() => {
-    setProgress((currentPower / maxPower) * 100);
-    if (currentPower >= 0 && !isIncreasing && currentPower < maxPower) {
-      setIsIncreasing(true);
+    expand();
+  }, []);
 
-      const increaser = setInterval(() => {
-        setCurrentPower((prevPower) => {
-          const newPower = prevPower + 1;
-          if (newPower > maxPower - 1) {
-            clearInterval(increaser);
-            setIsIncreasing(false);
-            setCurrentPower(newPower);
-          }
+  // useEffect(() => {
+  //   setProgress((currentPower / maxPower) * 100);
+  //   if (currentPower >= 0 && !isIncreasing && currentPower < maxPower) {
+  //     setIsIncreasing(true);
 
-          return newPower;
-        });
-      }, 1000);
-    }
-  }, [currentPower, maxPower, isIncreasing]);
+  //     const increaser = setInterval(() => {
+  //       setCurrentPower((prevPower) => {
+  //         const newPower = prevPower + 1;
+  //         if (newPower > maxPower - 1) {
+  //           clearInterval(increaser);
+  //           setIsIncreasing(false);
+  //           setCurrentPower(newPower);
+  //         }
+
+  //         return newPower;
+  //       });
+  //     }, 1000);
+  //   }
+  // }, [currentPower, maxPower, isIncreasing]);
 
   return (
     <ApplicationProvider>

@@ -100,7 +100,7 @@ const Menu = styled(ButtonGroup)(() => ({
 }));
 
 const menu = [
-  { icon: "🧸", title: "Frens", link: "/frens" },
+  { icon: "🧸", title: "Frens", link: "https://xaitama.com/" },
   { icon: "🪙", title: "Earn", link: "/earn" },
   { icon: "🚀", title: "Boosts", link: "/boosts" },
 ];

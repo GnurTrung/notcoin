@@ -18,12 +18,13 @@ export function ApplicationProvider({ children }: any) {
         hash: WebApp?.initDataUnsafe?.hash,
       };
       const res = await getUserProfile(params);
+      setPro5(res?.data);
       toast.success("User profile: ");
     } catch (ex) {
       // toast.error(ex);
     }
   };
-
+  console.log(process.env.REACT_APP_API_URL, "9999");
   useEffect(() => {
     WebApp?.initDataUnsafe?.user?.id && handleGetPro5();
   }, [WebApp?.initDataUnsafe?.user?.id]);
